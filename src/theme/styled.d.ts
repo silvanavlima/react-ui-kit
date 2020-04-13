@@ -10,6 +10,10 @@ declare module 'styled-components' {
         text?: string;
         toggleBorder?: string;
         gradient?: string;
+        backgrounds?: {
+            main: string;
+            secondary: string;
+        };
 
         colors?: {
             main: string;

@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 
 interface ButtonProps {
     bg?: string;
-    children?: ReactNode;
+    children?: React.ReactNode;
     lightTheme?: any;
 }
 

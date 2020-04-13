@@ -8,7 +8,11 @@ import styled from 'styled-components';
 import { ReactComponent as MoonIcon } from './../../assets/icons/apagada.svg';
 import { ReactComponent as SunIcon } from './../../assets/icons/acesa.svg';
 
-const ToggleContainer = styled.button`
+interface ToggleProps {
+    lightTheme?: any;
+}
+
+const ToggleContainer = styled.button<ToggleProps>`
     background: ${({ theme }) => theme.gradient};
     border: 2px solid ${({ theme }) => theme.toggleBorder};
     border-radius: 30px;
@@ -22,6 +26,24 @@ const ToggleContainer = styled.button`
     position: relative;
     width: 8rem;
     height: 4rem;
+    svg {
+        height: auto;
+        width: 2.5rem;
+        transition: all 0.3s linear;
+
+        // sun icon
+        &:first-child {
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+            transform: ${({ lightTheme }) =>
+                lightTheme ? 'translateY(0)' : 'translateY(100px)'};
+        }
+
+        // moon icon
+        &:nth-child(2) {
+            transform: ${({ lightTheme }) =>
+                lightTheme ? 'translateY(-100px)' : 'translateY(0)'};
+        }
+    }
 `;
 
 interface Props {
@@ -31,7 +53,12 @@ interface Props {
 
 const Toggle: React.FC<Props> = ({ theme, toggleTheme }) => {
     const isLight = theme === 'light';
-    return <ToggleContainer onClick={toggleTheme}></ToggleContainer>;
+    return (
+        <ToggleContainer onClick={toggleTheme}>
+            <SunIcon />
+            <MoonIcon />
+        </ToggleContainer>
+    );
 };
 
 export default Toggle;
