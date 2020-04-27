@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme/theme';
+import { lightTheme, darkTheme } from './theme/themes';
 import { GlobalStyles } from './global';
 import Toggle from './components/Button/Toggle';
 import { useDarkMode } from 'theme/useDarkMode';
+import Button from './components/Button/Button';
 
 function App() {
     const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -13,13 +14,14 @@ function App() {
     if (!componentMounted) {
         return <div />;
     }
+
     return (
         <ThemeProvider theme={themeMode}>
             <>
                 <GlobalStyles />
                 <Toggle theme={theme} toggleTheme={toggleTheme} />
                 <h1>
-                    React UI Kit{' '}
+                    REACT UI Kit
                     {theme === 'light' ? 'light tema' : 'dark tema'}!
                 </h1>
             </>

@@ -14,6 +14,12 @@ declare module 'styled-components' {
             main: string;
             secondary: string;
         };
+        fontFamily?: string;
+
+        fontSize?: {
+            h1?: string;
+            h2?: string;
+        };
 
         colors?: {
             main: string;
